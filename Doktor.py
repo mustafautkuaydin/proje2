@@ -1,5 +1,5 @@
 class Doktor():
-    def __init__(self,uzmanlik,deneyim_yili,hastane,):
+    def __init__(self,uzmanlik,deneyim_yili,hastane):
         self.__uzmanlik = uzmanlik
         self.__deneyim_yili = deneyim_yili
         self.__hastane = hastane
