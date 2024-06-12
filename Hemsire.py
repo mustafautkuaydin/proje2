@@ -2,7 +2,7 @@ from Personel import *
 
 class Hemsire(Personel):
     def __init__(self,personel_no,ad,soyad,departman,maas,calisma_saati,sertifika,hastane):
-        Personel.__init__(self,personel_no,ad,soyad,departman,maas)
+        super().__init__(personel_no,ad,soyad,departman,maas)
         self.__calisma_saati = calisma_saati
         self.__sertifika = sertifika
         self.__hastane = hastane
@@ -26,8 +26,7 @@ class Hemsire(Personel):
         return self.__hastane
     
     def maas_arttir(self):
-        artan_maas = self.__maas + 50*(self.__calisma_saati-8)
-        self.set_maas(artan_maas)
+        self.set_maas(self.get_maas()+50*(self.__calisma_saati-8))
     
     def __str__(self):
-        return f"Personel no: {self.__personel_no}, Ad: {self.__ad}, Soyad: {self.__soyad}, Departman: {self.__departman}, Maas: {self.__maas}, Calisma saati: {self.__calisma_saati}, Sertifika: {self.__sertifika}, Hastane: {self.__hastane}"
+        return f"{super().__str__()}, Calisma saati: {self.__calisma_saati}, Sertifika: {self.__sertifika}, Hastane: {self.__hastane}"

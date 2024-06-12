@@ -2,7 +2,7 @@ from Personel import *
 
 class Doktor(Personel):
     def __init__(self,personel_no,ad,soyad,departman,maas,uzmanlik,deneyim_yili,hastane):
-        Personel.__init__(self,personel_no,ad,soyad,departman,maas)
+        super().__init__(personel_no,ad,soyad,departman,maas)
         self.__uzmanlik = uzmanlik
         self.__deneyim_yili = deneyim_yili
         self.__hastane = hastane
@@ -27,14 +27,11 @@ class Doktor(Personel):
     
     def maas_arttir(self):
         if self.__deneyim_yili >= 2 and self.__deneyim_yili <= 4:
-            artan_maas = self.__maas + 20000
-            self.set_maas(artan_maas)
+            self.set_maas(self.get_maas() + 20000)
         if self.__deneyim_yili >= 5 and self.__deneyim_yili <= 9:
-            artan_maas = self.__maas + 30000
-            self.set_maas(artan_maas)
+            self.set_maas(self.get_maas() + 30000)
         if self.__deneyim_yili > 10:
-            artan_maas = self.__maas + 35000
-            self.set_maas(artan_maas)
+            self.set_maas(self.get_maas() + 35000)
 
     def __str__(self):
-        return f"Personel no: {self.__personel_no}, Ad: {self.__ad}, Soyad: {self.__soyad}, Departman: {self.__departman}, Maas: {self.__maas}, Uzmanlik: {self.__uzmanlik}, Deneyim yili: {self.__deneyim_yili}, Hastane: {self.__hastane}"
+        return f"{super().__str__()}, Uzmanlik: {self.__uzmanlik}, Deneyim yili: {self.__deneyim_yili}, Hastane: {self.__hastane}"
