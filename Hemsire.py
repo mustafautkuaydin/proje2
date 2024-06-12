@@ -26,7 +26,7 @@ class Hemsire(Personel):
         return self.__hastane
     
     def maas_arttir(self):
-        self.set_maas(self.get_maas()+50*(self.__calisma_saati-8))
+        self.set_maas(self.get_maas()+500*(self.__calisma_saati-8))
     
     def __str__(self):
         return f"{super().__str__()}, Calisma saati: {self.__calisma_saati}, Sertifika: {self.__sertifika}, Hastane: {self.__hastane}"
