@@ -1,5 +1,8 @@
-class Hemsire():
-    def __init__(self,calisma_saati,sertifika,hastane):
+from Personel import *
+
+class Hemsire(Personel):
+    def __init__(self,personel_no,ad,soyad,departman,maas,calisma_saati,sertifika,hastane):
+        Personel.__init__(self,personel_no,ad,soyad,departman,maas)
         self.__calisma_saati = calisma_saati
         self.__sertifika = sertifika
         self.__hastane = hastane
@@ -22,5 +25,9 @@ class Hemsire():
     def get_hastane(self):
         return self.__hastane
     
+    def maas_arttir(self):
+        artan_maas = self.__maas + 50*(self.__calisma_saati-8)
+        self.set_maas(artan_maas)
+    
     def __str__(self):
-        return f"{self.__calisma_saati}{self.__sertifika}{self.__hastane}"
+        return f"{self.__personel_no}{self.__ad}{self.__soyad}{self.__departman}{self.__maas}{self.__calisma_saati}{self.__sertifika}{self.__hastane}"
