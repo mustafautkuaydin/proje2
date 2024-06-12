@@ -1,4 +1,4 @@
-class Personel():
+class Hasta():
     def __init__(self,hasta_no,ad,soyad,dogum_tarihi,hastalik,tedavi):
         self.__hasta_no = hasta_no
         self.__ad = ad
@@ -42,6 +42,16 @@ class Personel():
     
     def get_tedavi(self):
         return self.__tedavi
+    
+    def tedavi_suresi_hesapla(self):
+        if self.__hastalik == "covid-19":
+            return "Tedavi süresi: 12 gün"
+        if self.__hastalik == "grip":
+            return "Tedavi süresi: 3 gün"
+        if self.__hasta_no == "farenjit":
+            return "Tedavi süresi: 5 gün"
+        if self.__hastalik == "zatürre":
+            return "Tedavi süresi: 10 gün"
     
     def __str__(self):
         return f"{self.__hasta_no}{self.__ad}{self.__soyad}{self.__dogum_tarihi}{self.__hastalik}{self.__tedavi}"
