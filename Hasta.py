@@ -54,4 +54,4 @@ class Hasta():
             return "Tedavi süresi: 10 gün"
     
     def __str__(self):
-        return f"{self.__hasta_no}{self.__ad}{self.__soyad}{self.__dogum_tarihi}{self.__hastalik}{self.__tedavi}"
+        return f"Hasta no: {self.__hasta_no}, Ad: {self.__ad}, Soyad: {self.__soyad}, Dogum tarihi{self.__dogum_tarihi}, Hastalik: {self.__hastalik}, Tedavi: {self.__tedavi}"

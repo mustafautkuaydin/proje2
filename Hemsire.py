@@ -30,4 +30,4 @@ class Hemsire(Personel):
         self.set_maas(artan_maas)
     
     def __str__(self):
-        return f"{self.__personel_no}{self.__ad}{self.__soyad}{self.__departman}{self.__maas}{self.__calisma_saati}{self.__sertifika}{self.__hastane}"
+        return f"Personel no: {self.__personel_no}, Ad: {self.__ad}, Soyad: {self.__soyad}, Departman: {self.__departman}, Maas: {self.__maas}, Calisma saati: {self.__calisma_saati}, Sertifika: {self.__sertifika}, Hastane: {self.__hastane}"

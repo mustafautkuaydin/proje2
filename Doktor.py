@@ -37,4 +37,4 @@ class Doktor(Personel):
             self.set_maas(artan_maas)
 
     def __str__(self):
-        return f"{self.__personel_no}{self.__ad}{self.__soyad}{self.__departman}{self.__maas}{self.__uzmanlik}{self.__deneyim_yili}{self.__hastane}"
+        return f"Personel no: {self.__personel_no}, Ad: {self.__ad}, Soyad: {self.__soyad}, Departman: {self.__departman}, Maas: {self.__maas}, Uzmanlik: {self.__uzmanlik}, Deneyim yili: {self.__deneyim_yili}, Hastane: {self.__hastane}"
