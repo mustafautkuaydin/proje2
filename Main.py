@@ -1,13 +1,16 @@
+# Pandasi ve siniflari import etme
 import pandas as pd
 from Personel import *
 from Doktor import *
 from Hemsire import *
 from Hasta import *
 
+# 2 tane Personel nesnesi uretme ve yazdirma
 Personel1 = Personel(1,"Ali","Yilmaz","Temizlik Gorevlisi",5000)
 Personel2 = Personel(2,"Ayse","Gun","Sekreter",6000)
 print(f"{Personel1}\n{Personel2}\n")
 
+# 3 tane Doktor nesnesi uretme, maasini arttirma ve yazdirma
 Doktor1 = Doktor(3,"Akif","Kol","Cocuk Doktoru",80000,"Cocuk Sagligi",3,"Tire Devlet Hastanesi")
 Doktor2 = Doktor(4,"Fikret","Hanci","Dahiliye",80000,"Dahiliye",7,"Tire Devlet Hastanesi")
 Doktor3 = Doktor(5,"Fatma","Soylu","Dahiliye",80000,"Dahiliye",12,"Tire Devlet Hastanesi")
@@ -16,6 +19,7 @@ Doktor.maas_arttir(Doktor2)
 Doktor.maas_arttir(Doktor3)
 print(f"{Doktor1}\n{Doktor2}\n{Doktor3}\n")
 
+# 3 tane Hemsire nesnesi uretme, maasini arttirma ve yazdirma
 Hemsire1 = Hemsire(6,"Sila","Korkmaz","Dahiliye",30000,50,"Dahiliye","Tire Devlet Hastanesi")
 Hemsire2 = Hemsire(7,"Hulya","Demir","Cocuk Sagligi",30000,55,"Cocuk Sagligi","Tire Devlet Hastanesi")
 Hemsire3 = Hemsire(8,"Mehmet","Kul","Dahiliye",30000,45,"Dahiliye","Tire Devlet Hastanesi")
@@ -24,13 +28,16 @@ Hemsire.maas_arttir(Hemsire2)
 Hemsire.maas_arttir(Hemsire3)
 print(f"{Hemsire1}\n{Hemsire2}\n{Hemsire3}\n")
 
+# 3 tane Hasta nesnesi uretme ve yazdirma
 Hasta1 = Hasta(1,"Yagmur","Dere",2000,"covid-19","SINOVAC asisi")
 Hasta2 = Hasta(2,"Hakan","Aktan",1995,"grip","Ilac")
 Hasta3 = Hasta(3,"Sezen","Sanci",1988,"farenjit","Ilac")
 print(f"{Hasta1}\n{Hasta2}\n{Hasta3}\n")
 
+# Maksimum sutun goruntuleme sayisini kaldirmak
 pd.set_option('display.max_columns', None)
 
+# DataFrame icin nesnelerin ozelliklerini girme
 Ozellikler = [
     {"personel_no":1, "ad":"Ali", "soyad":"Yilmaz", "departman":"Temizlik Gorevlisi", "maas":5000, "uzmanlik":0, "deneyim_yili": 0, "hastane":0, "calisma_saati":0, "sertifika":0, "hasta_no":0, "dogum_tarihi":0, "hastalik":0, "tedavi":0},
     {"personel_no":2, "ad":"Ayse", "soyad":"Gun", "departman":"Sekreter", "maas":6000, "uzmanlik":0, "deneyim_yili": 0, "hastane":0, "calisma_saati":0, "sertifika":0, "hasta_no":0, "dogum_tarihi":0, "hastalik":0, "tedavi":0},
@@ -45,23 +52,29 @@ Ozellikler = [
     {"personel_no":0, "ad":"Sezen", "soyad":"Sanci", "departman":0, "maas":0, "uzmanlik":0, "deneyim_yili": 0, "hastane":0, "calisma_saati":0, "sertifika":0, "hasta_no":3, "dogum_tarihi":1988, "hastalik":"farenjit", "tedavi":"Ilac"},
     ]
 
+# Ozelliklerden DataFrame olusturma
 df = pd.DataFrame(Ozellikler)
 
-# Doktorları uzmanlıga gore gruplama
+# Doktorları uzmanlıga gore gruplama ve toplayip yazdirma. Doktor olmayanlari elemek icin uzmanlik 0 olanlari filtreleme
 uzman_doktor_grubu = df[df["uzmanlik"] != 0].groupby("uzmanlik")
 print(f"Uzmanlik alanina göre doktor sayisi:\n\n{uzman_doktor_grubu.count()}\n\n")
 
+# Deneyim yili 5ten büyük olan doktorlari yazdirma
 deneyimli_doktor = df[df["deneyim_yili"] > 5]
 print(f"Deneyim yili 5 yildan fazla olan doktorlar:\n\n{deneyimli_doktor}\n\n")
 
+# Hasta adlarini alfabetik siralama. Hasta olamayanlari elemek icin hastalik 0 olanlari filtreleme
 hasta_siralama = df[df["hastalik"]!=0 ].sort_values("ad")
 print(f"Hasta adlarini alfabetik siralama:\n\n{hasta_siralama}\n\n")
 
+# Maasi 7000den buyuk olanlari yazdirma
 para_siralama = df[df["maas"]>7000]
 print(f"Maasi 7000 den fazla olan personeller:\n\n{para_siralama}\n\n")
 
+# Dogum yili 1990a eşit ve büyük olanlari yazdirma
 hasta_yas_siralama = df[df["dogum_tarihi"]>=1990]
 print(f"Dogum yili 1990 ve sonrasi olan hastalar:\n\n{hasta_yas_siralama}\n\n")
 
+# Mevcut DataFrameden ad, soyad, departman, maas, uzmanlik, deneyim yili, hastalik, tedavi ozelliklerini iceren yeni bir DataFrame olusturma
 yeniDataFrame=df[["ad","soyad","departman","maas","uzmanlik","deneyim_yili","hastalik","tedavi"]]
 print(f"Yeni DataFrame:\n\n{yeniDataFrame}\n\n")
