@@ -1,5 +1,8 @@
-class Doktor():
-    def __init__(self,uzmanlik,deneyim_yili,hastane):
+from Personel import *
+
+class Doktor(Personel):
+    def __init__(self,personel_no,ad,soyad,departman,maas,uzmanlik,deneyim_yili,hastane):
+        Personel.__init__(self,personel_no,ad,soyad,departman,maas)
         self.__uzmanlik = uzmanlik
         self.__deneyim_yili = deneyim_yili
         self.__hastane = hastane
@@ -22,5 +25,16 @@ class Doktor():
     def get_hastane(self):
         return self.__hastane
     
+    def maas_arttir(self):
+        if self.__deneyim_yili >= 2 and self.__deneyim_yili <= 4:
+            artan_maas = self.__maas + 20000
+            self.set_maas(artan_maas)
+        if self.__deneyim_yili >= 5 and self.__deneyim_yili <= 9:
+            artan_maas = self.__maas + 30000
+            self.set_maas(artan_maas)
+        if self.__deneyim_yili > 10:
+            artan_maas = self.__maas + 35000
+            self.set_maas(artan_maas)
+
     def __str__(self):
-        return f"{self.__uzmanlik}{self.__deneyim_yili}{self.__hastane}"
+        return f"{self.__personel_no}{self.__ad}{self.__soyad}{self.__departman}{self.__maas}{self.__uzmanlik}{self.__deneyim_yili}{self.__hastane}"
